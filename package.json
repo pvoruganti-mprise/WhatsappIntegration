@@ -4,14 +4,13 @@
   "description": "This is Project is regarding integrating Whatsapp to Business central",
   "main": "Start.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node Start.js",
+    "start": "node Start.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pvoruganti-mprise/WhatsappIntegration.git"
   },
-  "author": "",
+  "author": "Pranay",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/pvoruganti-mprise/WhatsappIntegration/issues"
