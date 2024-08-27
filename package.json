@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/pvoruganti-mprise/WhatsappIntegration#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "twilio": "^5.2.2"
   }
 }
