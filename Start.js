@@ -1,3 +1,5 @@
+const dotenv = require('dotenv')
+dotenv.config({path: './.env'})
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
@@ -11,7 +13,9 @@ app.use(bodyParser.json())
 
 
 app.get('/', async (req, res) => {
- res.sendFile(__dirname + '/index.html');
+//  res.sendFile(__dirname + '/index.html');
+console.log(process.env);
+res.send(process.env.NAME);
 })
 
 app.listen(port, () => {
