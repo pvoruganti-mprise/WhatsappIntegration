@@ -38,8 +38,8 @@ NTLMCLIENT.request(
     res.send('Content body of the response', response.body)
   })
   .catch(error => {
-    //res.send(error)
-    res.send({name:'Pranay'});
+    res.send(error)
+    //res.send({name:'Pranay'});
   })
 })
 
