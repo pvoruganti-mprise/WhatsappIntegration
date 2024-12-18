@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
-app.get('/ConfirmationMessage', async (req, res) => {
- res.sendFile(path.join(__dirname, './index.html'))
+app.get('/', async (req, res) => {
+ res.sendFile(__dirname + '/index.html');
 })
 
 app.listen(port, () => {
