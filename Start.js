@@ -13,14 +13,33 @@ app.use(bodyParser.json())
 
 const NTLMCLIENT = new NtlmClient()
 app.get('/', async (req, res) => {
-console.log(process.env);
- res.send(
-    `${process.env.USER}
-    ,${process.env.PASSWORD}
-    ,${process.env.WORKSTATION}
-    ,${process.env.URL}
-    ${process.env.DOMAIN}`
-  )
+NTLMCLIENT.request(
+  {
+    url: `http://mprise-pc-14.mprise.lunitehosting.net:7048/BC240/ODataV4/Company('Agriware%20Testbedrijf%20-%20BREED')/whatsappMessages`,
+    method: 'POST',
+    body: JSON.stringify({
+      mobileNumber: '+917989865497',
+      message: 'Hello'
+    }),
+    headers: {
+      'content-type': 'application/json',
+      vary: 'Accept-Encoding',
+      server: 'Microsoft-HTTPAPI/2.0',
+      connection: 'keep-alive',
+      Accept: '*/*'
+    }
+  },
+  'pvoruganti',
+  'Wednesday14#',
+  'mprise-pc-14.mprise.lunitehosting.net',
+  'mprise'
+)
+  .then(response => {
+    console.log('Content body of the response', response.body)
+  })
+  .catch(error => {
+    console.error(error)
+  })
 })
 
 app.post('/ReceiveMessage', async (req, res) => {
