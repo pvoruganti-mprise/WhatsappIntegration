@@ -22,7 +22,7 @@ app.post('/ReceiveMessage', async (req, res) => {
   let mobilenumber = body.From
   mobilenumber = mobilenumber.substring(9);
   console.log(body.Body);
-    sendmessage('Hello', '+916302040714')
+  sendmessage(body.Body, mobilenumber)
 });
 
 function sendmessage (message, mobileNumber) {
