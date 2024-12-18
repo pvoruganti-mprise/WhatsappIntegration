@@ -11,12 +11,52 @@ const Verify = require('twilio/lib/rest/Verify')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-
+const NTLMCLIENT = new NtlmClient()
 app.get('/', async (req, res) => {
 //  res.sendFile(__dirname + '/index.html');
 console.log(process.env);
 res.send(process.env.NAME);
 })
+
+app.post('/ReceiveMessage', async (req, res) => {
+  const { body } = req
+  let mobilenumber = body.From
+  mobilenumber = mobilenumber.substring(9);
+  console.log(body.Body);
+    sendmessage('Hello', '+916302040714')
+});
+
+function sendmessage (message, mobileNumber) {
+  NTLMCLIENT.request(
+    {
+      url: `${process.env.URL}`,
+      method: 'POST',
+      body: JSON.stringify({
+        mobileNumber: `${mobileNumber}`,
+        message: `${message}`
+      }),
+      headers: {
+        'content-type': 'application/json',
+        vary: 'Accept-Encoding',
+        server: 'Microsoft-HTTPAPI/2.0',
+        connection: 'keep-alive',
+        Accept: '*/*'
+      }
+    },
+    `${process.env.USER}`,
+    `${process.env.PASSWORD}`,
+    `${process.env.WORKSTATION}`,
+    `${process.env.DOMAIN}`
+  )
+    .then(response => {
+      console.log('Content body of the response', response.body)
+    })
+    .catch(error => {
+      console.error(error)
+    })
+}
+
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
