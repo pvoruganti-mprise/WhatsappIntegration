@@ -28,13 +28,7 @@ app.post('/ReceiveMessage', async (req, res) => {
   let mobilenumber = body.From
   mobilenumber = mobilenumber.substring(9);
   console.log(body.Body);
-  res.send(
-    `${process.env.USER}
-    ,${process.env.PASSWORD}
-    ,${process.env.WORKSTATION}
-    ,${process.env.URL}
-    ${process.env.DOMAIN}`
-  )
+  sendmessage(body.Body, mobilenumber);
 });
 
 function sendmessage (message, mobileNumber) {
