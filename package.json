@@ -18,6 +18,7 @@
   "homepage": "https://github.com/pvoruganti-mprise/WhatsappIntegration#readme",
   "dependencies": {
     "express": "^4.19.2",
+    "node-client-ntlm": "^0.0.6",
     "twilio": "^5.2.2"
   }
 }
