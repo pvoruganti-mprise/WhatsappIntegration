@@ -13,7 +13,6 @@ app.use(bodyParser.json())
 
 
 app.get('/', async (req, res) => {
-//  res.sendFile(__dirname + '/index.html');
 console.log(process.env);
 res.send(process.env.NAME);
 })
