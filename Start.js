@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 const NTLMCLIENT = new NtlmClient()
-app.get('/', async (req, res) => {
+app.post('/', async (req, res) => {
 NTLMCLIENT.request(
   {
     url: `http://mprise-pc-14.mprise.lunitehosting.net:7048/BC240/ODataV4/Company('Agriware%20Testbedrijf%20-%20BREED')/whatsappMessages`,
