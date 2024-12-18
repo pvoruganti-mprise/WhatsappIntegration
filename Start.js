@@ -5,7 +5,7 @@ const app = express()
 const port = process.env.PORT || 3000
 const path = require('path')
 const { send } = require('process')
-//const NtlmClient = require('node-client-ntlm').NtlmClient
+const NtlmClient = require('node-client-ntlm').NtlmClient
 var bodyParser = require('body-parser')
 const Verify = require('twilio/lib/rest/Verify')
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -14,7 +14,13 @@ app.use(bodyParser.json())
 const NTLMCLIENT = new NtlmClient()
 app.get('/', async (req, res) => {
 console.log(process.env);
-res.send(process.env.NAME);
+ res.send(
+    `${process.env.USER}
+    ,${process.env.PASSWORD}
+    ,${process.env.WORKSTATION}
+    ,${process.env.URL}
+    ${process.env.DOMAIN}`
+  )
 })
 
 app.post('/ReceiveMessage', async (req, res) => {
