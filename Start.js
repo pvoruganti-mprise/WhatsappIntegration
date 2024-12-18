@@ -35,10 +35,10 @@ NTLMCLIENT.request(
   'mprise'
 )
   .then(response => {
-    res.send('Content body of the response', response.body)
+    console.log('Content body of the response', response.body)
   })
   .catch(error => {
-    res.send(error)
+    console.log(error)
   })
 })
 
