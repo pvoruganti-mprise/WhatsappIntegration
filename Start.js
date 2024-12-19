@@ -73,12 +73,33 @@ function sendmessage (message, mobileNumber) {
     `${process.env.DOMAIN}`
   )
     .then(response => {
-      console.log('Content body of the response', response.body)
+      res.send('Content body of the response', response.body)
     })
     .catch(error => {
       console.error(error)
     })
 }
+
+app.get('/SendMessageFromBusinessCentralToUser', async(req, res) => {
+  const queries = req.query;
+  const message = queries.message;
+  const accountSid = process.env.ACCOUNTSID;
+const authToken = process.env.AUTHTOKEN;
+const client = require('twilio')(accountSid, authToken)
+client.messages
+  .create({
+    from: `whatsapp:+${queries.From}`,
+    body:`${message}`,
+    to: `whatsapp:+${queries.To}`
+  })
+  .then(message => {
+    res.send(message)
+  })
+  .catch(error => {
+    res.send(error)
+  });
+
+})
 
 
 
