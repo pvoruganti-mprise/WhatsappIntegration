@@ -39,6 +39,7 @@ NTLMCLIENT.request(
   })
   .catch(error => {
     res.send(error)
+    //res.send({name:'Pranay'});
   })
 })
 
